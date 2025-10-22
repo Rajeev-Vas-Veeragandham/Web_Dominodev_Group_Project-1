@@ -176,3 +176,244 @@ a{color:inherit}
 .panel-gallery figure{overflow:hidden;border-radius:12px;box-shadow:var(--soft-shadow);transition:transform var(--transition)}
 .panel-gallery figure:hover{transform:scale(1.03)}
 .panel-gallery img{width:100%;height:160px;object-fit:cover;display:block}
+/* ---------- Shopping list ---------- */
+.shopping-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;padding:14px;background:var(--panel);border-radius:12px;box-shadow:var(--soft-shadow)}
+.shopping-list label{display:flex;gap:8px;align-items:center;padding:8px;border-radius:8px}
+
+/* ---------- About / proposal ---------- */
+.panel-about .proposal{background:var(--panel);padding:16px;border-radius:12px;box-shadow:var(--soft-shadow)}
+
+/* ---------- Footer ---------- */
+.site-footer{background:var(--panel);padding:16px;margin-top:22px;box-shadow:var(--soft-shadow)}
+.footer-inner{max-width:var(--maxw);margin:0 auto;text-align:center;color:var(--muted)}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1000px){
+  .hero{flex-direction:column}
+  .hero-right{width:100%}
+  .menu-area{flex-direction:column}
+  .cart{position:relative;width:100%;top:auto}
+  .order-form{grid-template-columns:1fr}
+  .feature-card{width:100%}
+}
+
+@media (max-width:640px){
+  .nav-tabs{display:none} /* mobile nav: labels still work as controls */
+  .hero{padding:18px}
+  .gallery-thumb img{height:80px}
+  .card-scene{height:300px}
+}
+
+/* ======================
+   NEW CSS ADDITIONS FOR THE UPDATED HTML
+   ====================== */
+
+/* ---------- Home Gallery Hover Effects ---------- */
+.gallery-thumb {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  transition: all var(--transition);
+}
+
+.gallery-thumb:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.gallery-thumb:hover .gallery-overlay {
+  opacity: 1;
+}
+
+/* ---------- Active Filter States ---------- */
+/* Active state for menu filters */
+#filter-all:checked ~ * .menu-filters label[for="filter-all"],
+#filter-pizzas:checked ~ * .menu-filters label[for="filter-pizzas"],
+#filter-sides:checked ~ * .menu-filters label[for="filter-sides"],
+#filter-desserts:checked ~ * .menu-filters label[for="filter-desserts"],
+#filter-drinks:checked ~ * .menu-filters label[for="filter-drinks"] {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* Active state for home page quick filters */
+#filter-all:checked ~ * .quick-filters label[for="filter-all"],
+#filter-pizzas:checked ~ * .quick-filters label[for="filter-pizzas"],
+#filter-sides:checked ~ * .quick-filters label[for="filter-sides"],
+#filter-desserts:checked ~ * .quick-filters label[for="filter-desserts"],
+#filter-drinks:checked ~ * .quick-filters label[for="filter-drinks"] {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* Update existing filter chips to have transition */
+.filter-chip,
+.menu-filters .chip {
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.filter-chip:hover,
+.menu-filters .chip:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--soft-shadow);
+}
+
+/* ---------- Shopping list ---------- */
+.shopping-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  padding: 20px;
+  background: var(--panel);
+  border-radius: 12px;
+  box-shadow: var(--soft-shadow);
+  margin: 20px 0;
+  list-style: none;
+}
+
+.shopping-list label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition);
+  border: 1px solid color-mix(in srgb, var(--muted) 10%, transparent);
+}
+
+.shopping-list label:hover {
+  background: color-mix(in srgb, var(--accent) 4%, transparent);
+  transform: translateY(-2px);
+}
+
+.shopping-list input[type="checkbox"]:checked + * {
+  text-decoration: line-through;
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+.shopping-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  justify-content: center;
+}
+
+/* Shopping order success message */
+#shopping-order-confirm:checked ~ .maincontent .panel-shopping .order-success.shopping-success {
+  display: block;
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  margin-top: 20px;
+}
+
+#shopping-order-confirm:checked ~ .maincontent .panel-shopping .shopping-list,
+#shopping-order-confirm:checked ~ .maincontent .panel-shopping .shopping-actions,
+#shopping-order-confirm:checked ~ .maincontent .panel-shopping h2,
+#shopping-order-confirm:checked ~ .maincontent .panel-shopping .muted {
+  display: none;
+}
+
+/* Reset shopping order when shopping-order-reset is checked */
+#shopping-order-reset:checked ~ .maincontent .panel-shopping .order-success.shopping-success {
+  display: none;
+}
+
+#shopping-order-reset:checked ~ .maincontent .panel-shopping .shopping-list,
+#shopping-order-reset:checked ~ .maincontent .panel-shopping .shopping-actions,
+#shopping-order-reset:checked ~ .maincontent .panel-shopping h2,
+#shopping-order-reset:checked ~ .maincontent .panel-shopping .muted {
+  display: block;
+}
+
+/* Hide shopping-order-confirm when reset is checked */
+#shopping-order-reset:checked ~ #shopping-order-confirm {
+  display: none;
+}
+
+/* Success actions styling */
+.success-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+}
+/* ---------- Order Success Message Fix ---------- */
+.order-success {
+  display: none;
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  font-weight: 700;
+}
+
+#order-confirm:checked ~ .maincontent .panel-order .order-success {
+  display: block;
+}
+
+/* ---------- Menu Card Improvements ---------- */
+/* Remove any existing card-actions from front face */
+.card-face.front .card-actions {
+  display: none;
+}
+
+/* Ensure back face actions are properly styled */
+.card-face.back .card-actions {
+  margin-top: auto;
+  padding-top: 16px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+/* ---------- Responsive Improvements ---------- */
+@media (max-width: 640px) {
+  .shopping-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  
+  .clear-completed {
+    align-self: flex-end;
+  }
+  
+  .gallery-overlay {
+    font-size: 0.9rem;
+  }
+}
+
+/* ---------- Small Button Improvements ---------- */
+.btn.small {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+
+/* ---------- Small UX polish ---------- */
+.muted{color:var(--muted)}
+.add-label input{margin-right:6px}

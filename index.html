@@ -602,8 +602,112 @@
             <label class="order-item"><input type="checkbox"> Coke (500ml)</label>
           </div>
         </div>
-            
-    
+
+        <form class="order-form" onsubmit="return false;" aria-label="Order form">
+          <label>
+            Full name
+            <input type="text" name="name" placeholder="Your name" required>
+          </label>
+
+          <label>
+            Contact (phone/email)
+            <input type="text" name="contact" placeholder="Phone or email" required>
+          </label>
+
+          <label class="full">
+            Delivery address
+            <input type="text" name="address" placeholder="Street, city, zip" required>
+          </label>
+
+          <label class="full">
+            Notes
+            <textarea name="notes" rows="2" placeholder="Extra instructions (optional)"></textarea>
+          </label>
+
+          <div class="form-actions">
+            <!-- This label toggles #order-confirm which reveals thank-you message -->
+            <label for="order-confirm" class="btn primary submit-order">Place Order</label>
+            <label for="tab-menu" class="btn ghost">Back to Menu</label>
+          </div>
+
+          <!-- Only show success message when order is confirmed -->
+          <div class="order-success" aria-live="polite">
+            <p>🎉 Thank you! Your order has been placed. 🎉</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- GALLERY PANEL -->
+    <section class="panel panel-gallery" aria-labelledby="gallery-title">
+      <div class="panel-inner">
+        <h2 id="gallery-title">Gallery</h2>
+        <p class="muted">Chef's Special</p>
+
+        <div class="gallery-grid">
+          <figure><img src="images/margharita.jpg" alt="Margherita"></figure>
+          <figure><img src="images/pepperoni.jpg" alt="Pepperoni"></figure>
+          <figure><img src="images/cheeseburst.jpeg" alt="Cheese Burst"></figure>
+          <figure><img src="images/veggie.jpg" alt="Veggie"></figure>
+          <figure><img src="images/dominator.jpg" alt="Dominator"></figure>
+          <figure><img src="images/bbqchicken.jpg" alt="BBQ Chicken"></figure>
+          <figure><img src="images/chocolava.jpg" alt="Chocolate Lava"></figure>
+        </div>
+      </div>
+    </section>
+ <!-- SHOPPING PANEL -->
+<section class="panel panel-shopping" aria-labelledby="shopping-title">
+  <div class="panel-inner">
+    <h2 id="shopping-title">Shopping List</h2>
+    <p class="muted">Auto-generate & edit shopping list — check items as you buy them.</p>
+
+    <ul class="shopping-list">
+      <li><label><input type="checkbox"> Pizza dough (500 g)</label></li>
+      <li><label><input type="checkbox"> Tomato sauce (jar)</label></li>
+      <li><label><input type="checkbox"> Fresh mozzarella (200 g)</label></li>
+      <li><label><input type="checkbox"> Fresh basil</label></li>
+      <li><label><input type="checkbox"> Olive oil</label></li>
+      <li><label><input type="checkbox"> Garlic cloves</label></li>
+      <li><label><input type="checkbox"> Bell peppers</label></li>
+      <li><label><input type="checkbox"> Paneer cubes</label></li>
+      <li><label><input type="checkbox"> Mushrooms</label></li>
+      <li><label><input type="checkbox"> Onions</label></li>
+    </ul>
+
+    <div class="shopping-actions">
+      <label for="shopping-order-confirm" class="btn primary">Place Grocery Order</label>
+      <label for="tab-menu" class="btn ghost">Back to Menu</label>
+    </div>
+
+    <!-- Shopping Order Success Message -->
+    <div class="order-success shopping-success" aria-live="polite">
+      <p>🎉 Grocery Order Placed Successfully! 🎉</p>
+      <p>Your grocery items will be delivered within 2 hours.</p>
+      <p>You'll receive a confirmation with delivery tracking.</p>
+      <div class="success-actions">
+        <label for="shopping-order-reset" class="btn primary">Place New Order</label>
+        <label for="tab-menu" class="btn ghost">Back to Menu</label>
+      </div>
+    </div>
+  </div>
+</section>
+    <!-- ABOUT / PROJECT PROPOSAL PANEL -->
+    <section class="panel panel-about" aria-labelledby="about-title">
+      <div class="panel-inner narrow">
+        <h2 id="about-title">Project-1 — Team DominoDev</h2>
+        <p class="muted">Course: CSC 4370/6370 — Web Programming (Fall 2025) — Prof. Henry Louis</p>
+
+        <article class="proposal">
+          <h3>Project Summary</h3>
+          <p>This DominoDev microsite recreates the Domino's ordering experience using pure CSS functionality. Key features include hover-activated card flips revealing nutritional information, category filtering for menu items, persistent shopping cart updates, and a complete order workflow—all achieved through innovative CSS-only state management.</p>
+
+          <h3>Group Members</h3>
+          <p>Rajeev Vas Veeragandham (Team Leader) and Gowtham Revanur</p>
+
+        </article>
+
+      </div>
+    </section>
     
 
   </main>
